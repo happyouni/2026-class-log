@@ -1,0 +1,155 @@
+# Visual Studio C언어 실습 오류 해결표 (학생 배포용)
+
+## C언어 실습 중 자주 발생하는 오류와 해결 방법
+
+C언어 실습을 하다 보면 프로그램이 실행되지 않거나 오류 메시지가 나타날 수 있습니다.
+아래 표를 참고하여 **오류 원인과 해결 방법을 차례대로 확인해 보세요.**
+
+---
+
+## 1. stdio.h 파일 오류
+
+**오류 메시지**
+
+```
+fatal error C1083: cannot open include file: 'stdio.h'
+```
+
+**원인**
+C언어 컴파일 도구(MSVC) 또는 Windows SDK가 설치되지 않았을 가능성이 큽니다.
+
+**해결 방법**
+
+1. Visual Studio Installer 실행
+2. 설치된 Visual Studio에서 **수정(Modify)** 클릭
+3. 다음 항목이 설치되어 있는지 확인
+
+✔ C++를 사용한 데스크톱 개발
+✔ x64/x86 MSVC 빌드 도구
+✔ Windows SDK
+
+---
+
+## 2. scanf 관련 경고
+
+**오류 메시지**
+
+```
+warning C4996: 'scanf': This function may be unsafe
+```
+
+**원인**
+Visual Studio에서 보안 이유로 scanf 사용 시 경고 메시지가 나타납니다.
+
+**해결 방법**
+
+코드 맨 위에 다음 문장을 추가합니다.
+
+```
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+```
+
+---
+
+## 3. 실행 파일을 열 수 없음
+
+**오류 메시지**
+
+```
+LNK1168: cannot open Debug\프로그램이름.exe for writing
+```
+
+**원인**
+이전에 실행된 프로그램이 아직 종료되지 않았습니다.
+
+**해결 방법**
+
+1. 실행된 **검은 콘솔창을 닫기**
+2. Visual Studio에서 **중지 버튼 클릭**
+3. 그래도 안 되면 Visual Studio 재실행
+
+---
+
+## 4. 라이브러리 파일 오류
+
+**오류 메시지**
+
+```
+fatal error LNK1104: cannot open file 'kernel32.lib'
+```
+
+**원인**
+Windows SDK가 설치되지 않았거나 프로젝트 설정 오류입니다.
+
+**해결 방법**
+
+1. Visual Studio Installer 실행
+2. **Windows SDK 설치 여부 확인**
+3. 프로젝트를 **Console App**으로 생성했는지 확인
+
+---
+
+## 5. 프로그램 창이 바로 사라짐
+
+**증상**
+
+프로그램 실행 후 검은 창이 잠깐 나타났다가 바로 사라짐
+
+**원인**
+프로그램이 실행 후 바로 종료되었기 때문입니다.
+
+**해결 방법**
+
+실행할 때 다음 단축키를 사용합니다.
+
+```
+Ctrl + F5
+```
+
+또는 코드 마지막에 다음을 추가할 수 있습니다.
+
+```
+getchar();
+```
+
+---
+
+## C언어 프로그램 기본 실행 코드 예
+
+```
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello C Language\n");
+    return 0;
+}
+```
+
+실행 방법
+
+```
+Ctrl + F5
+```
+
+---
+
+## 실습 오류 해결 체크 순서
+
+오류가 발생하면 다음 순서로 확인하세요.
+
+1. 코드에 오타가 없는가?
+2. `#include <stdio.h>`가 있는가?
+3. Visual Studio에 C++ 개발 도구가 설치되었는가?
+4. 실행 파일이 이미 실행 중인가?
+5. 실행을 `Ctrl + F5`로 했는가?
+
+---
+
+### C언어 실습 팁
+
+✔ 오류 메시지는 대부분 **문제 위치를 알려주는 힌트입니다.**
+✔ 당황하지 말고 **메시지 첫 줄을 먼저 확인하세요.**
+✔ 오류를 하나씩 해결하면 프로그램은 정상적으로 실행됩니다.
