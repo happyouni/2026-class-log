@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    
+    printf("숫자를 입력하세요: ");
+    scanf("%d",&num);
+    
+    if(num%2==0) //num이 짝수면 아래 실행
+    {
+        printf("짝수");
+        printf("2로 나눈 나머지가 0");
+    }
+    else //num이 홀수면 아래 실행
+   {
+        printf("홀수");
+        printf("2로 나눈 나머지가 1");
+    }
+    
+    return 0;
+}
